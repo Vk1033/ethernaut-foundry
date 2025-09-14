@@ -5,7 +5,7 @@ import {Script, console} from "forge-std/Script.sol";
 import {CoinFlip} from "../src/3CoinFlip.sol";
 
 contract HackFlip {
-    uint256 FACTOR = 57896044618658097711785492504343953926634992332820282019728792003956564819968;
+    uint256 constant FACTOR = 57896044618658097711785492504343953926634992332820282019728792003956564819968;
     CoinFlip public coinFlip;
 
     constructor(address _coinFlipAddress) {
