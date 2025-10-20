@@ -1,0 +1,8 @@
+#define macro MAIN() = takes(0) returns(0) {
+    0x2a    // push 42
+    0x00    // memory offset
+    mstore  // store 42 at mem[0]
+    0x20    // length (32 bytes)
+    0x00    // offset
+    return  // return 32 bytes
+}
